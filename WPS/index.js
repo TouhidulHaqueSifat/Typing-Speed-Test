@@ -26,16 +26,18 @@ function loadParagraph(){
 }
 
 let startTime, interval;
-function startTimer(){
+/*function startTimer(){
     startTime = new Date();
     interval = setInterval(()=>{
         const elapsed = Math.floor((new Date() - startTime) / 1000);
         timer.innerText = elapsed;
     }, 1000);
 
-}
-/*function startTimer(){
-    let timeLeft = 60;
+}*/
+ let timeLeft = 60;
+timer.innerText = timeLeft;
+function startTimer(){
+   
     timer.innerText = timeLeft;
     startTime = new Date();
 
@@ -47,7 +49,7 @@ function startTimer(){
             timer.innerText = "Time's up!";
         }
     },1000)
-}*/
+}
 function stopTimer(){
     clearInterval(interval);
 }
