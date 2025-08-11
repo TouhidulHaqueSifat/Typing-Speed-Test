@@ -1,6 +1,6 @@
 const paragraphs = [
- "Typing is a useful skill for programmers and writers.",
-  "The quick brown fox jumps over the lazy dog.",
+ "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
   "JavaScript is a versatile language for frontend development."
 ];
 
@@ -26,18 +26,11 @@ function loadParagraph(){
 }
 
 let startTime, interval;
-/*function startTimer(){
-    startTime = new Date();
-    interval = setInterval(()=>{
-        const elapsed = Math.floor((new Date() - startTime) / 1000);
-        timer.innerText = elapsed;
-    }, 1000);
 
-}*/
- let timeLeft = 60;
-timer.innerText = timeLeft;
+let timeLeft1 = 5;
+timer.innerText = timeLeft1;
 function startTimer(){
-   
+    let timeLeft = timeLeft1;
     timer.innerText = timeLeft;
     startTime = new Date();
 
@@ -47,6 +40,7 @@ function startTimer(){
         if(timeLeft <= 0){
             clearInterval(interval);
             timer.innerText = "Time's up!";
+            textInput.disabled = true;
         }
     },1000)
 }
@@ -54,7 +48,6 @@ function stopTimer(){
     clearInterval(interval);
 }
 
-// Todo: fixed the timer
 function checkTypeSpeed(){
     textInput.addEventListener("input", ()=>{
         const input = textInput.value;
@@ -98,10 +91,28 @@ function checkTypeSpeed(){
         if(input.length === current_text.length){
             stopTimer();
         }
-
+        
+        
     })
 }
-//startTimer();
+
+function reset(){
+    restart.addEventListener("click", ()=>{
+        textInput.value = "";
+        textInput.disabled = false;
+        
+        //accuracy.innerText = "0";
+        timer.innerText = timeLeft1;
+        wpm.innerText = "0";
+        accuracy.innerText = "0";
+        stopTimer();
+        startTime = null;
+        loadParagraph();
+        textInput.focus();
+    });
+}
+
 loadParagraph();
 checkTypeSpeed();
-//console.log(textArea);
+reset();
+
